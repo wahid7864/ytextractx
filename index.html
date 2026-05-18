@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJW20MBFSL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JJW20MBFSL');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YT ExtractX - Free Pro YouTube Toolkit</title>
@@ -152,12 +161,11 @@
             document.getElementById('btn-' + tabId).classList.add('bg-red-600', 'text-white');
         }
 
-        // ULTRA PARSER: Long Videos, Shorts and Mobile links sabse Video ID nikalega
+        // ULTRA PARSER: Long Videos, Shorts and Mobile links
         function youtubeIdParser(url){
             var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
             var match = url.match(regExp);
             
-            // Shorts link filter backup rule
             if(!match || match[7].length !== 11) {
                 const shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
                 return shortsMatch ? shortsMatch[1] : false;
@@ -171,7 +179,6 @@
             const btn = document.getElementById('btnText');
             if(!urlInput) { alert('Bhai, link toh dalo!'); return; }
             
-            // Fix for Shorts API block: Normalizing shorts link structure for noembed API
             if(urlInput.includes('/shorts/')) {
                 const sId = youtubeIdParser(urlInput);
                 if(sId) urlInput = `https://www.youtube.com/watch?v=${sId}`;
