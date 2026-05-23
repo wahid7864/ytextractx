@@ -126,7 +126,7 @@
                 <input type="text" id="thumbUrl" placeholder="Paste YouTube link here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl text-sm focus:outline-none focus:border-red-500">
                 <button onclick="getThumbnail()" class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl text-sm cursor-pointer">Fetch Assets 🖼️</button>
                 <div id="thumbResult" class="hidden text-center space-y-4 pt-4">
-                    <img id="thumbPreview" src="" class="max-w-xs mx-auto rounded-xl border border-slate-700">
+                    <img id="thumbPreview" src="" class="max-w-xs mx-auto rounded-xl border border-slate-700" alt="Preview">
                     <br>
                     <a id="thumbDownloadLink" href="#" target="_blank" class="bg-green-600 text-xs px-6 py-2.5 rounded-xl text-white font-bold inline-block">Open HD Asset 📥</a>
                 </div>
@@ -222,13 +222,14 @@
 
         function youtubeIdParser(url){
             if(!url) return false;
-            let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             let match = url.match(regExp);
-            if(!match || match[7].length !== 11) {
+            if(match && match[2].length === 11) {
+                return match[2];
+            } else {
                 let shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
                 return shortsMatch ? shortsMatch[1] : false;
             }
-            return (match && match[7].length == 11) ? match[7] : false;
         }
 
         async function executeExtractionEngine() {
@@ -287,4 +288,4 @@
             if(!id) { alert("Invalid URL Link!"); return; }
             let imgUrl = "https://img.youtube.com/vi/" + id + "/maxresdefault.jpg";
             document.getElementById('thumbPreview').src = imgUrl;
-           
+            document.getEl
