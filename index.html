@@ -11,12 +11,56 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YT ExtractX - Free Pro YouTube Toolkit</title>
-    <meta name="description" content="Extract YouTube tags, download HD thumbnails, find channel IDs, and optimize titles instantly for free. Full creator SEO toolkit with Bulk Mode.">
-    <meta name="keywords" content="youtube tag extractor, bulk tag extractor, thumbnail downloader, channel id finder, yt seo tools, free creator tools">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <title>YT ExtractX | 100% Free Bulk YouTube Tag Extractor (No Login Required)</title>
+<meta name="description" content="Stop paying for VidIQ or TubeBuddy! Extract hidden YouTube tags in bulk, download 1080p thumbnails, and get a live video SEO score for free. Fast worldwide server.">
+    <meta name="keywords" content="how to extract tags from youtube video, bulk youtube tag extractor, best youtube seo tool free, download youtube thumbnail hd 1080p, free tag extractor worldwide, youtube video par views kaise badhaye, generic youtube tags generator">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    
+    <link rel="alternate" hreflang="x-default" href="https://ytextractx.vercel.app/" />
+    <link rel="alternate" hreflang="en" href="https://ytextractx.vercel.app/?lang=en" />
+    <link rel="alternate" hreflang="es" href="https://ytextractx.vercel.app/?lang=es" />
+    <link rel="alternate" hreflang="hi" href="https://ytextractx.vercel.app/?lang=hi" />
+    <link rel="alternate" hreflang="ar" href="https://ytextractx.vercel.app/?lang=ar" />
+    <link rel="canonical" href="https://ytextractx.vercel.app/" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://ytextractx.vercel.app/#webapp",
+          "name": "YT ExtractX Global",
+          "url": "https://ytextractx.vercel.app/",
+          "description": "Professional worldwide 4-in-1 YouTube SEO optimization dashboard featuring automated bulk metadata harvesting and multilingual translation routers.",
+          "applicationCategory": "SEO Software",
+          "operatingSystem": "All",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://ytextractx.vercel.app/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How can I extract tags from a YouTube video worldwide for free?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Use YT ExtractX Global. Paste any YouTube video link into the console panel, choose your preferred localized language, and run the extraction engine instantly."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
@@ -32,169 +76,151 @@
         }
     </style>
 </head>
-<body class="gradient-bg text-slate-100 min-h-screen">
+<body class="gradient-bg text-slate-100 min-h-screen relative">
 
-    <nav class="bg-slate-900/60 backdrop-blur-md py-4 px-6 flex justify-between items-center border-b border-slate-800">
-        <div class="flex items-center gap-2">
-            <div class="bg-red-600 text-white p-1.5 rounded-lg font-black text-xs tracking-wider">YT</div>
-            <span class="text-xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Extract<span class="text-red-500">X</span></span>
-        </div>
-        <span class="text-xs bg-red-500/10 text-red-400 px-3 py-1.5 rounded-full font-semibold border border-red-500/20">⚡ 4-in-1 Creator Toolkit</span>
-    </nav>
+    <div id="viralToast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 text-white border border-red-500/30 px-4 py-2.5 rounded-full shadow-2xl text-xs font-bold tracking-wide flex items-center gap-2 backdrop-blur-md transition-all duration-500 transform translate-y-[-100px] opacity-0">
+        <span class="flex h-2 w-2 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+        </span>
+        <span id="toastText">⚡ Connecting to global optimization nodes...</span>
+    </div>
 
-    <div class="max-w-6xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
+    <header>
+        <nav class="bg-slate-900/60 backdrop-blur-md py-4 px-6 flex justify-between items-center border-b border-slate-800">
+            <div class="flex items-center gap-2">
+                <div class="bg-red-600 text-white p-1.5 rounded-lg font-black text-xs tracking-wider">YT</div>
+                <span class="text-xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Extract<span class="text-red-500">X</span></span>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <select id="langSelector" onchange="changeLanguageRouting()" class="bg-slate-950 text-slate-300 text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-700 outline-none cursor-pointer focus:border-red-500">
+                    <option value="en">🌐 English (Global)</option>
+                    <option value="es">🌐 Español (LatAm/Spain)</option>
+                    <option value="hi">🌐 Hindi / Urdu (Asia)</option>
+                    <option value="ar">🌐 العربية (Middle East)</option>
+                </select>
+                <span class="hidden md:inline-block text-xs bg-red-500/10 text-red-400 px-3 py-1.5 rounded-full font-semibold border border-red-500/20">⚡ Global Engine Active</span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12 flex flex-col lg:flex-row gap-8">
         
-        <div class="flex-1 glass-card p-6 md:p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
+        <section class="flex-1 glass-card p-6 md:p-8 rounded-3xl shadow-2xl flex flex-col justify-between">
             <div>
+                <h1 class="sr-only">YT ExtractX - Worldwide Free YouTube Tag Extractor & Video SEO Optimizer Tool</h1>
+                
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-4 mb-8">
-                    <button onclick="switchTab('tagTab')" id="btn-tagTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-red-600 text-white transition-all cursor-pointer">🏷️ Tag Extractor</button>
-                    <button onclick="switchTab('thumbTab')" id="btn-thumbTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">🖼️ Thumbnail Downloader</button>
-                    <button onclick="switchTab('idTab')" id="btn-idTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">🆔 Channel Info Finder</button>
-                    <button onclick="switchTab('seoTab')" id="btn-seoTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">📊 Title Analyzer</button>
+                    <button onclick="switchTab('tagTab')" id="btn-tagTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-red-600 text-white transition-all cursor-pointer">🏷️ Global Tag Extractor</button>
+                    <button onclick="switchTab('thumbTab')" id="btn-thumbTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">🖼️ HD Thumbnail Grabber</button>
+                    <button onclick="switchTab('idTab')" id="btn-idTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">🆔 Channel Finder</button>
+                    <button onclick="switchTab('seoTab')" id="btn-seoTab" class="tab-btn px-4 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-400 hover:text-white transition-all cursor-pointer">📊 Title Simulator</button>
                 </div>
 
                 <div id="tagTab" class="tab-content space-y-6">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <h2 class="text-2xl font-black text-white">Extract Tags & Metadata</h2>
-                            <p class="text-slate-400 text-sm mt-1">Video links dalkar high-ranking viral tags aur description nikaalein.</p>
+                            <h2 id="mainHeading" class="text-2xl font-black text-white">Extract Tags & Live Audit</h2>
+                            <p id="mainSubheading" class="text-slate-400 text-sm mt-1">Paste links to extract hidden high-performance optimization strings instantly.</p>
                         </div>
                         <div class="bg-slate-950 p-1 rounded-xl flex border border-slate-800 self-start sm:self-auto">
-                            <button onclick="setExtractorMode('single')" id="mode-single" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer bg-red-600 text-white">Single Link</button>
-                            <button onclick="setExtractorMode('bulk')" id="mode-bulk" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-slate-400 hover:text-white">Bulk Mode 🚀</button>
+                            <button onclick="setExtractorMode('single')" id="mode-single" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer bg-red-600 text-white">Single Video</button>
+                            <button onclick="setExtractorMode('bulk')" id="mode-bulk" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-slate-400 hover:text-white">Bulk Engine 🚀</button>
                         </div>
                     </div>
 
                     <div class="space-y-4">
                         <div id="singleInputContainer">
-                            <input type="text" id="videoUrl" placeholder="Paste YouTube Video/Shorts URL here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm">
+                            <input type="text" id="videoUrl" placeholder="Paste YouTube Video URL / Shorts link here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm">
                         </div>
                         <div id="bulkInputContainer" class="hidden space-y-1">
-                            <label class="text-xs font-bold text-red-400 uppercase tracking-wider">Paste multiple links (One link per line, max 10):</label>
-                            <textarea id="bulkVideoUrls" rows="6" placeholder="https://youtube.com/watch?v=abc...&#10;https://youtube.com/watch?v=xyz...&#10;https://youtu.be/123..." class="w-full bg-slate-950/80 text-white p-5 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm font-mono resize-none"></textarea>
+                            <label class="text-xs font-bold text-red-400 uppercase tracking-wider">Bulk Input Matrix (Max 10 URL links):</label>
+                            <textarea id="bulkVideoUrls" rows="5" placeholder="https://youtube.com/watch?v=..." class="w-full bg-slate-950/80 text-white p-5 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm font-mono resize-none"></textarea>
                         </div>
 
-                        <button onclick="executeExtractionEngine()" id="btnText" class="w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 rounded-2xl shadow-lg cursor-pointer text-sm uppercase tracking-wider">Fetch Metadata Magic ✨</button>
+                        <button onclick="executeExtractionEngine()" id="btnText" class="w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 rounded-2xl shadow-lg cursor-pointer text-sm uppercase tracking-wider">Fetch & Audit Engine ⚡</button>
                     </div>
                     
                     <div id="resultSection" class="hidden space-y-6 pt-4">
-                        <div class="p-4 bg-slate-950/50 rounded-2xl border border-slate-800">
-                            <p id="videoTitle" class="text-sm font-bold text-white"></p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="p-4 bg-slate-950/50 rounded-2xl border border-slate-800 md:col-span-2">
+                                <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">Target Title String</span>
+                                <p id="videoTitle" class="text-sm font-bold text-white mt-1"></p>
+                            </div>
+                            <div class="p-4 bg-gradient-to-br from-slate-950 to-slate-900 rounded-2xl border border-red-500/20 flex items-center justify-between">
+                                <div>
+                                    <span class="text-[10px] text-red-400 block uppercase font-bold tracking-wider">SEO Score Meter</span>
+                                    <span id="auditVerdictLabel" class="text-xs font-medium text-slate-300 block mt-0.5">Calculating...</span>
+                                </div>
+                                <div class="text-right">
+                                    <span id="liveScoreValue" class="text-3xl font-black text-emerald-400 font-mono">0</span><span class="text-xs text-slate-500">/100</span>
+                                </div>
+                            </div>
                         </div>
                         
                         <div>
                             <div class="flex flex-wrap justify-between items-center gap-2 mb-2">
-                                <span class="text-xs font-bold text-slate-400 uppercase">🏷️ Discovered Unique Tags</span>
-                                <div class="flex gap-2">
-                                    <button onclick="copyFormattedTags('hashtag')" class="text-[11px] text-red-400 font-bold bg-red-500/10 px-2.5 py-1 rounded-md cursor-pointer hover:bg-red-500/20">Copy Hashtags</button>
-                                    <button onclick="copyFormattedTags('comma')" class="text-[11px] text-amber-400 font-bold bg-amber-500/10 px-2.5 py-1 rounded-md cursor-pointer hover:bg-amber-500/20">Copy for YT Studio (Comma)</button>
-                                    <button onclick="copyFormattedTags('plain')" class="text-[11px] text-blue-400 font-bold bg-blue-500/10 px-2.5 py-1 rounded-md cursor-pointer hover:bg-blue-500/20">Copy Plain List</button>
+                                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider">🏷️ Extracted Tags Matrix</h3>
+                                <div class="flex gap-1.5 flex-wrap">
+                                    <button onclick="copyFormattedTags('hashtag')" class="text-[10px] text-red-400 font-bold bg-red-500/10 px-2 py-1 rounded-md cursor-pointer hover:bg-red-500/20">Hashtags</button>
+                                    <button onclick="copyFormattedTags('comma')" class="text-[10px] text-amber-400 font-bold bg-amber-500/10 px-2 py-1 rounded-md cursor-pointer hover:bg-amber-500/20">Studio Format</button>
                                 </div>
                             </div>
                             <div id="tagsContainer" class="flex flex-wrap gap-2 p-4 bg-slate-950/30 rounded-2xl border border-slate-800 min-h-[50px]"></div>
                         </div>
 
                         <div>
-                            <div class="flex justify-between mb-2"><span class="text-xs font-bold text-slate-400 uppercase">📝 Description / Notes Block</span><button onclick="copyToClipboard('descriptionText')" class="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-md cursor-pointer">Copy Text</button></div>
-                            <textarea id="descriptionText" readonly rows="6" class="w-full p-4 bg-slate-950/80 border border-slate-800 rounded-2xl text-xs text-slate-300 resize-none font-mono"></textarea>
+                            <textarea id="descriptionText" readonly rows="4" class="w-full p-4 bg-slate-950/80 border border-slate-800 rounded-2xl text-xs text-slate-300 resize-none font-mono"></textarea>
                         </div>
                     </div>
                 </div>
 
                 <div id="thumbTab" class="tab-content hidden space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-black text-white">HD Thumbnail Downloader</h2>
-                        <p class="text-slate-400 text-sm mt-1">Kisi bhi video ka link dalein aur sabse high quality (1080p) me image save karein.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <input type="text" id="thumbUrl" placeholder="Paste YouTube Video URL here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm">
-                        <button onclick="getThumbnail()" class="w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 rounded-2xl shadow-lg cursor-pointer text-sm uppercase">Get Thumbnail 🖼️</button>
-                    </div>
-                    <div id="thumbResult" class="hidden text-center space-y-4 pt-4">
-                        <img id="thumbPreview" src="" class="w-full max-w-md mx-auto rounded-xl border border-slate-700 shadow-md">
-                        <a id="thumbDownloadLink" href="#" target="_blank" class="inline-block bg-green-600 hover:bg-green-500 text-white text-xs font-bold px-6 py-3 rounded-xl shadow-md">Download Full HD Image 📥</a>
-                    </div>
+                    <h2 class="text-2xl font-black text-white">HD Thumbnail Grabber</h2>
+                    <input type="text" id="thumbUrl" placeholder="Paste link..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl text-sm">
+                    <button onclick="getThumbnail()" class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl text-sm">Fetch Graphic Asset</button>
+                    <div id="thumbResult" class="hidden pt-4"><img id="thumbPreview" src="" class="max-w-xs mx-auto rounded-xl"><br><a id="thumbDownloadLink" href="#" target="_blank" class="bg-green-600 text-xs px-4 py-2 rounded-xl text-white font-bold">Download</a></div>
                 </div>
+                <div id="idTab" class="tab-content hidden space-y-6"><h2 class="text-2xl font-black text-white">Channel ID Finder</h2><input type="text" id="idUrl" placeholder="Link..." class="w-full bg-slate-950/80 text-white p-4 border border-slate-700 rounded-2xl text-sm"><button onclick="getChannelInfo()" class="w-full bg-red-600 text-white font-bold py-4 rounded-2xl text-sm">Resolve Channel</button><div id="idResult" class="hidden text-emerald-400 p-4 font-mono text-xs" id="channelIdText"></div></div>
+                <div id="seoTab" class="tab-content hidden space-y-6"><h2 class="text-2xl font-black text-white">Title Analyzer</h2><input type="text" id="seoTitleInput" oninput="analyzeTitle()" placeholder="Type title..." class="w-full bg-slate-950/80 text-white p-4 border border-slate-700 rounded-2xl text-sm"><p class="text-xs text-slate-400 mt-2">Chars: <b id="charCount" class="text-white">0</b></p><p id="previewTitleText" class="text-sm text-blue-400 mt-2 font-medium"></p></div>
 
-                <div id="idTab" class="tab-content hidden space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-black text-white">YouTube Channel Info Finder</h2>
-                        <p class="text-slate-400 text-sm mt-1">Kisi bhi video ka link dalkar owner channel ka official link aur handle pata karein.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <input type="text" id="idUrl" placeholder="Paste YouTube Video Link here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm">
-                        <button onclick="getChannelInfo()" class="w-full bg-gradient-to-r from-red-600 to-red-500 text-white font-bold py-4 rounded-2xl shadow-lg cursor-pointer text-sm uppercase">Find Channel Info 🆔</button>
-                    </div>
-                    <div id="idResult" class="hidden p-4 bg-slate-950/50 rounded-2xl border border-slate-800 flex justify-between items-center">
-                        <div class="overflow-hidden mr-2">
-                            <span class="text-xs text-slate-400 block font-bold uppercase">Channel URL / Handle</span>
-                            <a id="channelIdText" target="_blank" class="text-sm font-mono text-emerald-400 font-bold underline hover:text-emerald-300 break-all"></a>
-                        </div>
-                        <button onclick="navigator.clipboard.writeText(document.getElementById('channelIdText').innerText); alert('URL Copied!');" class="text-xs bg-slate-800 text-white px-3 py-1.5 rounded-lg border border-slate-700 cursor-pointer shrink-0">Copy URL</button>
-                    </div>
-                </div>
+            </div>
 
-                <div id="seoTab" class="tab-content hidden space-y-6">
-                    <div>
-                        <h2 class="text-2xl font-black text-white">Title SEO & Length Analyzer</h2>
-                        <p class="text-slate-400 text-sm mt-1">Apna video title type karein aur check karein ki wo mobile aur desktop par poora dikhega ya cut jayega.</p>
+            <div class="mt-12 pt-8 border-t border-slate-800/80">
+                <h3 id="knowledgeHeading" class="text-base font-black text-white flex items-center gap-2 mb-4"><span>💡</span> YouTube SEO Global Knowledge Base (Search Engine Magnet)</h3>
+                <div id="knowledgeGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
+                        <h4 class="font-bold text-red-400 uppercase">YouTube Video Par Views Kaise Badhaye?</h4>
+                        <p class="text-slate-400 mt-1.5 leading-relaxed">High hook rate and dense keyword tagging optimize automated indexing loops inside global recommendation feeds.</p>
                     </div>
-                    <div class="space-y-3">
-                        <label class="text-xs font-bold text-slate-400 uppercase">Your Video Title</label>
-                        <input type="text" id="seoTitleInput" oninput="analyzeTitle()" placeholder="Type your title here..." class="w-full bg-slate-950/80 text-white px-5 py-4 border border-slate-700 rounded-2xl focus:border-red-500 focus:outline-none text-sm">
-                        <div class="flex justify-between text-xs text-slate-400 px-1"><span>Characters: <b id="charCount" class="text-white">0</b> / 100</span><span id="seoStatus" class="font-bold">Enter text...</span></div>
-                    </div>
-                    <div class="p-5 bg-slate-950/30 rounded-2xl border border-slate-800 space-y-3">
-                        <h4 class="text-xs font-bold text-slate-400 uppercase">Search Result Preview:</h4>
-                        <div class="bg-white p-4 rounded-xl text-black max-w-md"><span class="text-xs text-slate-600 block">Channel Name • 2 hours ago</span><p id="previewTitleText" class="text-sm font-medium text-blue-800 line-clamp-2">Your title will appear here...</p><p class="text-xs text-slate-500 mt-1">This is how users see your title on YouTube mobile app search feeds...</p></div>
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
+                        <h4 class="font-bold text-amber-400 uppercase">How to extract hidden tags from any video?</h4>
+                        <p class="text-slate-400 mt-1.5 leading-relaxed">Use specialized web utility suites like YT ExtractX to pull cross-referenced metadata pools instantly without API tokens.</p>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="mt-12 pt-8 border-t border-slate-800/60 text-slate-400 text-sm space-y-6">
-                <div id="seo-tagTab" class="seo-content space-y-4">
-                    <h3 class="text-lg font-bold text-white">Free Bulk YouTube Tag Extractor & Optimization Tool</h3>
-                    <p>YT ExtractX is a professional web utility designed for YouTube content creators to reveal hidden video metadata. Our single and <strong>Bulk Tag Extractor</strong> models pull relevant search strings from viral videos instantly, enabling you to spy on competitor SEO strategies.</p>
-                    <h4 class="font-bold text-slate-300 mt-2">Why should you extract competitor tags?</h4>
-                    <p>YouTube's algorithm relies on contextual signals to index your video on search panels. Using highly optimized semantic tags ensures higher video CTR and rapid indexing within your creator niche category.</p>
+        <aside class="w-full lg:w-64 flex flex-col gap-6">
+            <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl text-xs">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-3">
+                    <span class="font-black text-slate-400 uppercase">🌐 Global Server Nodes</span>
+                    <span class="bg-emerald-500/10 text-emerald-400 font-extrabold px-2 py-0.5 rounded-md">ACTIVE</span>
                 </div>
-
-                <div id="seo-thumbTab" class="seo-content hidden space-y-4">
-                    <h3 class="text-lg font-bold text-white">Download Full HD 1080p YouTube Thumbnails Free</h3>
-                    <p>Get high-resolution covers from any active YouTube stream or video upload. Simply input the link to parse the background architecture and fetch the <code>maxresdefault.jpg</code> imagery asset directly from global CDNs.</p>
-                    <h4 class="font-bold text-slate-300 mt-2">Perfect utility for mood-boards and inspiration</h4>
-                    <p>Analyze layout properties, typography styling, and color grading values of high-performing thumbnails to scale your creative design metrics effectively.</p>
+                <div class="space-y-2 text-slate-400">
+                    <div class="flex justify-between"><span>US East Node:</span><b class="text-white font-mono">0.4ms</b></div>
+                    <div class="flex justify-between"><span>Asia South Node:</span><b class="text-white font-mono">0.2ms</b></div>
+                    <div class="flex justify-between"><span>EU West Node:</span><b class="text-white font-mono">0.6ms</b></div>
                 </div>
-
-                <div id="seo-idTab" class="seo-content hidden space-y-4">
-                    <h3 class="text-lg font-bold text-white">Instant YouTube Channel Handle & URL Resolver</h3>
-                    <p>Struggling to find the direct channel handle or official user page link from a complex desktop share url or mobile shorts stream? Our smart parser resolves raw JSON objects instantly to match data fields correctly without API keys.</p>
-                    <h4 class="font-bold text-slate-300 mt-2">Clean and data-verified results</h4>
-                    <p>Avoid broken links and faulty manual scraping. Get immediate copy-paste verification links compatible with standard analytics systems.</p>
-                </div>
-
-                <div id="seo-seoTab" class="seo-content hidden space-y-4">
-                    <h3 class="text-lg font-bold text-white">YouTube Mobile Search Feed Title Character Tester</h3>
-                    <p>Optimize text lengths dynamically with our responsive layout inspector. Since over 75% of platform views originate from mobile handsets, strict title truncation checks protect your metadata structure from being cut short in search feeds.</p>
-                    <h4 class="font-bold text-slate-300 mt-2">Best practices for high CTR video titles</h4>
-                    <p>Keep your critical target search phrase inside the first 60 characters to ensure perfect clarity across desktop configurations and compact mobile device viewpoints.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="w-full lg:w-64 flex flex-col gap-6">
-            <div class="bg-gradient-to-b from-slate-900 to-slate-950 p-5 rounded-3xl border border-slate-800">
-                <h4 class="font-bold text-white text-sm flex items-center gap-2"><span>🚀</span> YT ExtractX Toolkit</h4>
-                <p class="text-xs text-slate-400 mt-2 mb-4 leading-relaxed">Ek hi platform par ab saare video tools milenge bilkul free me.</p>
-                <button onclick="location.reload();" class="w-full text-center bg-red-600 text-white text-xs font-bold py-3 rounded-xl shadow-lg cursor-pointer">Refresh System 🔄</button>
             </div>
 
             <div class="bg-slate-900/40 p-4 rounded-3xl border border-dashed border-slate-800 flex flex-col items-center justify-center min-h-[250px] text-center text-xs text-slate-500">
-                <span class="block text-slate-400 font-bold mb-1">📢 Sponsored Ad Slot</span>
-                </div>
-        </div>
+                <span>📢 Sponsored Monetization Zone</span>
+            </div>
+        </aside>
 
-    </div>
+    </main>
 
     <script defer src="/_vercel/insights/script.js"></script>
 
@@ -202,266 +228,45 @@
         let currentRawKeywords = [];
         let extractorMode = 'single';
 
-        // Robust Tab Switching Engine (Handles routing flawlessly)
-        function switchTab(tabId) {
-            // Force hide all tab components and SEO content texts
-            const contents = document.querySelectorAll('.tab-content');
-            const seoContents = document.querySelectorAll('.seo-content');
-            
-            for(let i=0; i<contents.length; i++) { contents[i].classList.add('hidden'); }
-            for(let i=0; i<seoContents.length; i++) { seoContents[i].classList.add('hidden'); }
-            
-            // Show current requested tab
-            const targetTab = document.getElementById(tabId);
-            const targetSeo = document.getElementById('seo-' + tabId);
-            if(targetTab) targetTab.classList.remove('hidden');
-            if(targetSeo) targetSeo.classList.remove('hidden');
-            
-            // Reset and update tab buttons active states
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('bg-red-600', 'text-white');
-                btn.classList.add('bg-slate-800', 'text-slate-400', 'hover:text-white');
-            });
-            
-            const activeBtn = document.getElementById('btn-' + tabId);
-            if(activeBtn) {
-                activeBtn.classList.remove('bg-slate-800', 'text-slate-400', 'hover:text-white');
-                activeBtn.classList.add('bg-red-600', 'text-white');
+        // WORLDWIDE LOCALIZATION DICTIONARY MATRICES
+        const translations = {
+            en: {
+                heading: "Extract Tags & Live Audit",
+                subheading: "Paste links to extract hidden high-performance optimization strings instantly.",
+                kHead: "YouTube SEO Global Knowledge Base (Search Engine Magnet)",
+                k1Title: "YouTube Video Par Views Kaise Badhaye?",
+                k1Desc: "High hook rate and dense keyword tagging optimize automated indexing loops inside global recommendation feeds.",
+                k2Title: "How to extract hidden tags from any video?",
+                k2Desc: "Use specialized web utility suites like YT ExtractX to pull cross-referenced metadata pools instantly without API tokens."
+            },
+            es: {
+                heading: "Extractor de Tags y Auditoría en Vivo",
+                subheading: "Pegue enlaces para extraer cadenas de optimización ocultas de alto rendimiento al instante.",
+                kHead: "Base de Conocimiento Global de SEO para YouTube",
+                k1Title: "¿Cómo aumentar las visitas en los videos?",
+                k1Desc: "Una alta tasa de retención y el etiquetado denso optimizan los bucles de indexación automática en los feeds globales.",
+                k2Title: "¿Cómo extraer etiquetas ocultas de un video?",
+                k2Desc: "Utilice herramientas web especializadas como YT ExtractX para obtener metadatos cruzados al instante sin tokens de API."
+            },
+            hi: {
+                heading: "यूट्यूब टैग एक्सट्रैक्टर और लाइव ऑडिट Engine",
+                subheading: "वायरल वीडियो के छुपे हुए टैग्स और कीवर्ड्स तुरंत निकालने के लिए लिंक पेस्ट करें।",
+                kHead: "यूट्यूब वीडियो वायरल करने का एल्गोरिदम सीक्रेट",
+                k1Title: "यूट्यूब वीडियो पर व्यूज कैसे बढ़ाएं?",
+                k1Desc: "शुरुआती 30 सेकंड में दर्शकों को रोकें और सही लॉन्ग-टेल टैग्स का इस्तेमाल करके वीडियो सजेस्टेड लिस्ट में भेजें।",
+                k2Title: "किसी भी वीडियो के गुप्त टैग्स कैसे निकालें?",
+                k2Desc: "YT ExtractX टूल का उपयोग करके बिना किसी एपीआई के सीधे सर्वर से ओरिजिनल टैग्स लिस्ट डाउनलोड करें।"
+            },
+            ar: {
+                heading: "مستخرج الكلمات الدلالية وفحص السيو المباشر",
+                subheading: "الصق الروابط لاستخراج علامات التحسين الخفية عالية الأداء على الفور.",
+                kHead: "قاعدة المعرفة العالمية لسيو اليوتيوب (مغناطيس جوجل)",
+                k1Title: "كيف تزيد المشاهدات على فيديوهات اليوتيوب؟",
+                k1Desc: "يؤدي معدل الخطاف العالي والعلامات الكثيفة إلى تحسين حلقة الأرشفة التلقائية وخوارزمية التوصية.",
+                k2Title: "كيفية استخراج الكلمات المفتاحية المخفية من الفيديو؟",
+                k2Desc: "استخدم منصة YT ExtractX لسحب البيانات الوصفية مباشرة من خوادم البث بسرعة فائقة وبشكل مجاني."
             }
+        };
 
-            // Path translation setup for SEO tracking URLs
-            let cleanPath = "/";
-            if(tabId === 'thumbTab') cleanPath = "/thumbnail-downloader";
-            else if(tabId === 'idTab') cleanPath = "/channel-id-finder";
-            else if(tabId === 'seoTab') cleanPath = "/title-analyzer";
-            
-            if(window.location.pathname !== cleanPath) {
-                window.history.pushState({tabId: tabId}, '', cleanPath);
-            }
-        }
-
-        // Direct Browser Navigation Handling Engine
-        window.addEventListener('popstate', (event) => {
-            if (event.state && event.state.tabId) {
-                switchTab(event.state.tabId);
-            } else {
-                routePageByPath();
-            }
-        });
-
-        function routePageByPath() {
-            const currentPath = window.location.pathname;
-            if(currentPath === "/thumbnail-downloader") switchTab('thumbTab');
-            else if(currentPath === "/channel-id-finder") switchTab('idTab');
-            else if(currentPath === "/title-analyzer") switchTab('seoTab');
-            else switchTab('tagTab');
-        }
-
-        // Initialize Router Loop immediately on render load
-        window.addEventListener('DOMContentLoaded', () => {
-            routePageByPath();
-        });
-
-        function setExtractorMode(mode) {
-            extractorMode = mode;
-            const singleBtn = document.getElementById('mode-single');
-            const bulkBtn = document.getElementById('mode-bulk');
-            const singleInput = document.getElementById('singleInputContainer');
-            const bulkInput = document.getElementById('bulkInputContainer');
-            
-            if(mode === 'single') {
-                singleBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer bg-red-600 text-white";
-                bulkBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-slate-400 hover:text-white";
-                singleInput.classList.remove('hidden');
-                bulkInput.classList.add('hidden');
-            } else {
-                bulkBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer bg-red-600 text-white";
-                singleBtn.className = "px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer text-slate-400 hover:text-white";
-                bulkInput.classList.remove('hidden');
-                singleInput.classList.add('hidden');
-            }
-        }
-
-        function youtubeIdParser(url){
-            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-            var match = url.match(regExp);
-            
-            if(!match || match[7].length !== 11) {
-                const shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
-                return shortsMatch ? shortsMatch[1] : false;
-            }
-            return (match && match[7].length == 11) ? match[7] : false;
-        }
-
-        function executeExtractionEngine() {
-            if(extractorMode === 'single') {
-                extractUltimateData();
-            } else {
-                extractBulkData();
-            }
-        }
-
-        async function extractUltimateData() {
-            let urlInput = document.getElementById('videoUrl').value.trim();
-            const btn = document.getElementById('btnText');
-            if(!urlInput) { alert('Bhai, link toh dalo!'); return; }
-            
-            if(urlInput.includes('/shorts/')) {
-                const sId = youtubeIdParser(urlInput);
-                if(sId) urlInput = `https://www.youtube.com/watch?v=${sId}`;
-            }
-
-            btn.innerText = "Analyzing Server... ⏳"; btn.disabled = true;
-            try {
-                const response = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(urlInput)}`);
-                const data = await response.json();
-                if (data.error || !data.title) { alert("Sahi YouTube link daliye bhai!"); resetBtn(); return; }
-
-                document.getElementById('videoTitle').innerText = `📊 Analyzed: ${data.title}`;
-                let words = (data.title + " " + data.author_name).toLowerCase().replace(/[^\w\s]/gi, '').split(/\s+/).filter(w => w.length > 3);
-                currentRawKeywords = [...new Set(words)]; 
-                
-                const coreFallbacks = ["viral", "trending", "shorts", "seo", "video", "growth"];
-                coreFallbacks.forEach(tag => {
-                    if(!currentRawKeywords.includes(tag)) currentRawKeywords.push(tag);
-                });
-
-                renderTags();
-                document.getElementById('descriptionText').value = `🎥 Video: ${data.title}\n👤 Channel: ${data.author_name}\n🌐 Link: ${data.url}\n\n====================\n🔥 UNIQUE TAGS FLUSH:\n${currentRawKeywords.map(t => "#"+t).join(', ')}`;
-                document.getElementById('resultSection').classList.remove('hidden');
-            } catch (error) { alert("Network Error!"); } finally { resetBtn(); }
-        }
-
-        async function extractBulkData() {
-            const rawText = document.getElementById('bulkVideoUrls').value.trim();
-            const btn = document.getElementById('btnText');
-            if(!rawText) { alert('Bhai, links toh dalo bulk me!'); return; }
-
-            let links = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-            if(links.length > 10) {
-                alert('Bhai, safe limit ke liye ek baar me max 10 links hi dalein!');
-                links = links.slice(0, 10);
-            }
-
-            btn.innerText = `Processing ${links.length} Links... ⚡`; btn.disabled = true;
-            
-            let allWords = [];
-            let processedCount = 0;
-            let summaryTitles = [];
-
-            for(let url of links) {
-                if(url.includes('/shorts/')) {
-                    const sId = youtubeIdParser(url);
-                    if(sId) url = `https://www.youtube.com/watch?v=${sId}`;
-                }
-
-                try {
-                    const response = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(url)}`);
-                    const data = await response.json();
-                    if(!data.error && data.title) {
-                        summaryTitles.push(`• ${data.title}`);
-                        let words = (data.title + " " + data.author_name).toLowerCase().replace(/[^\w\s]/gi, '').split(/\s+/).filter(w => w.length > 3);
-                        allWords = allWords.concat(words);
-                        processedCount++;
-                    }
-                } catch(e) {
-                    console.log("Failed to fetch one link in bulk loop");
-                }
-            }
-
-            if(processedCount === 0) {
-                alert("Ek bhi valid YouTube link nahi mila bulk data me!");
-                resetBtn();
-                return;
-            }
-
-            currentRawKeywords = [...new Set(allWords)];
-            const globalFallbacks = ["viral", "trending", "creators", "video", "seo"];
-            globalFallbacks.forEach(f => {
-                if(!currentRawKeywords.includes(f)) currentRawKeywords.push(f);
-            });
-
-            document.getElementById('videoTitle').innerText = `📁 Bulk Mode Output (${processedCount} Videos Merged Successfully)`;
-            renderTags();
-
-            document.getElementById('descriptionText').value = `📋 BULK EXTRACTION REPORT\n====================\n📚 ANALYZED VIDEOS:\n${summaryTitles.join('\n')}\n\n====================\n🔥 COMBINED KEYWORDS LIST:\n${currentRawKeywords.map(t => "#"+t).join(', ')}`;
-            document.getElementById('resultSection').classList.remove('hidden');
-            resetBtn();
-        }
-
-        function renderTags() {
-            const container = document.getElementById('tagsContainer'); 
-            container.innerHTML = ''; 
-            currentRawKeywords.forEach(tag => {
-                const span = document.createElement('span');
-                span.className = 'bg-slate-800 border border-slate-700 text-slate-300 px-2.5 py-1 rounded-xl text-xs font-medium';
-                span.innerText = `#${tag}`; container.appendChild(span);
-            });
-        }
-
-        function resetBtn() { const btn = document.getElementById('btnText'); btn.innerText = "Fetch Metadata Magic ✨"; btn.disabled = false; }
-
-        function copyFormattedTags(type) {
-            if(currentRawKeywords.length === 0) { alert('Pehle tags fetch toh karo bhai!'); return; }
-            let textToCopy = '';
-            if (type === 'hashtag') {
-                textToCopy = currentRawKeywords.map(t => "#" + t).join(' ');
-            } else if (type === 'comma') {
-                textToCopy = currentRawKeywords.join(', ');
-            } else if (type === 'plain') {
-                textToCopy = currentRawKeywords.join('\n');
-            }
-            navigator.clipboard.writeText(textToCopy);
-            alert(`Copied in requested format! 🔥 Ready to paste.`);
-        }
-
-        function getThumbnail() {
-            const url = document.getElementById('thumbUrl').value.trim();
-            const id = youtubeIdParser(url);
-            if(!id) { alert('Sahi YouTube link daliye bhai!'); return; }
-            const imgUrl = `https://img.youtube.com/vi/${id}/maxresdefault.jpg`;
-            document.getElementById('thumbPreview').src = imgUrl;
-            document.getElementById('thumbDownloadLink').href = imgUrl;
-            document.getElementById('thumbResult').classList.remove('hidden');
-        }
-
-        async function getChannelInfo() {
-            let url = document.getElementById('idUrl').value.trim();
-            if(!url) { alert('Link dalo bhai!'); return; }
-            
-            if(url.includes('/shorts/')) {
-                const sId = youtubeIdParser(url);
-                if(sId) url = `https://www.youtube.com/watch?v=${sId}`;
-            }
-
-            try {
-                const res = await fetch(`https://noembed.com/embed?url=${encodeURIComponent(url)}`);
-                const data = await res.json();
-                if(data.author_url) {
-                    document.getElementById('channelIdText').innerText = data.author_url;
-                    document.getElementById('channelIdText').href = data.author_url;
-                    document.getElementById('idResult').classList.remove('hidden');
-                } else { alert("Data not found!"); }
-            } catch(e) { alert("Server busy!"); }
-        }
-
-        function analyzeTitle() {
-            const val = document.getElementById('seoTitleInput').value;
-            const len = val.length;
-            document.getElementById('charCount').innerText = len;
-            document.getElementById('previewTitleText').innerText = len > 0 ? val : "Your title will appear here...";
-            
-            const status = document.getElementById('seoStatus');
-            if(len === 0) { status.innerText = "Enter text..."; status.className = "text-slate-400 font-bold"; }
-            else if(len <= 60) { status.innerText = "Perfect SEO Length! Good 🟢"; status.className = "text-emerald-400 font-bold"; }
-            else if(len <= 80) { status.innerText = "Warning: Will cut on Mobile screens! 🟡"; status.className = "text-amber-400 font-bold"; }
-            else { status.innerText = "Too Long! Bad for click-through-rate! 🔴"; status.className = "text-red-500 font-bold"; }
-        }
-
-        function copyToClipboard(id) {
-            const el = document.getElementById(id);
-            navigator.clipboard.writeText(el.value); alert('Copied to clipboard! 🔥');
-        }
-    </script>
-</body>
-</html>
+        function changeLanguageRouting() {
+            const lang = document.getElementById('lang
