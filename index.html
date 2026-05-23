@@ -56,7 +56,7 @@
                 <div class="bg-red-600 text-white p-1.5 rounded-lg font-black text-xs tracking-wider">YT</div>
                 <span class="text-xl font-extrabold bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">Extract<span class="text-red-500">X</span></span>
             </div>
-            <div class="bg-emerald-500/10 text-emerald-400 text-[10px] font-black px-2.5 py-1 rounded-md border border-emerald-500/20 uppercase tracking-widest animate-pulse">● Auto Global Routing Active</div>
+            <div class="bg-emerald-500/10 text-emerald-400 text-[10px] font-black px-2.5 py-1 rounded-md border border-emerald-500/20 uppercase tracking-widest">● Auto Global Routing Active</div>
         </nav>
     </header>
 
@@ -154,21 +154,18 @@
 
             <div class="mt-12 pt-8 border-t border-slate-800/80 space-y-6">
                 <h3 class="text-base font-black text-white flex items-center gap-2">🌐 Global Indexing Matrix (Google Keyword Magnet Node)</h3>
-                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
-                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-all">
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
                         <span class="text-[10px] text-red-400 font-bold uppercase tracking-wider block mb-1">🇺🇸 Region: Global / North America</span>
                         <h4 class="font-extrabold text-white text-sm">How to get tags from YouTube video link?</h4>
                         <p class="text-slate-400 mt-1 leading-relaxed">Copy any streaming link, paste it inside the central parsing input array, and extract all raw string keywords without API integration tokens instantly.</p>
                     </div>
-
-                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-all">
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
                         <span class="text-[10px] text-amber-400 font-bold uppercase tracking-wider block mb-1">🇮🇳 Region: Asia / India / Pakistan</span>
                         <h4 class="font-extrabold text-white text-sm">YouTube video par views aur subscribers kaise badhaye?</h4>
                         <p class="text-slate-400 mt-1 leading-relaxed">Viral videos ke hidden tags ko extract karke apne video dashboard ke description block aur tags meta dashboard me insert karne se auto-recommendation feed boost hoti hai.</p>
                     </div>
-
-                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800 hover:border-red-500/30 transition-all">
+                    <div class="p-4 bg-slate-900/60 rounded-2xl border border-slate-800">
                         <span class="text-[10px] text-blue-400 font-bold uppercase tracking-wider block mb-1">🇪🇺 Region: Europe / Global Creators</span>
                         <h4 class="font-extrabold text-white text-sm">Best free YouTube tag extractor tool online bulk</h4>
                         <p class="text-slate-400 mt-1 leading-relaxed">YT ExtractX represents a professional architecture engineered to pull highly optimized content descriptors in real-time, functioning completely free of charge.</p>
@@ -185,9 +182,11 @@
 
         function showToast(message) {
             const toast = document.getElementById('viralToast');
-            document.getElementById('toastText').innerText = message;
-            toast.style.opacity = "1";
-            setTimeout(() => { toast.style.opacity = "0"; }, 3000);
+            if(toast) {
+                document.getElementById('toastText').innerText = message;
+                toast.style.opacity = "1";
+                setTimeout(() => { toast.style.opacity = "0"; }, 3000);
+            }
         }
 
         function switchTab(tabId) {
@@ -222,10 +221,11 @@
         }
 
         function youtubeIdParser(url){
-            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
-            var match = url.match(regExp);
+            if(!url) return false;
+            let regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+            let match = url.match(regExp);
             if(!match || match[7].length !== 11) {
-                const shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
+                let shortsMatch = url.match(/\/shorts\/([a-zA-Z0-9_-]{11})/);
                 return shortsMatch ? shortsMatch[1] : false;
             }
             return (match && match[7].length == 11) ? match[7] : false;
@@ -286,4 +286,5 @@
             const id = youtubeIdParser(url);
             if(!id) { alert("Invalid URL Link!"); return; }
             let imgUrl = "https://img.youtube.com/vi/" + id + "/maxresdefault.jpg";
-          
+            document.getElementById('thumbPreview').src = imgUrl;
+           
